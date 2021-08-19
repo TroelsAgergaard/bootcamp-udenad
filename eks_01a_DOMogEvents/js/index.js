@@ -2,8 +2,8 @@
 document.addEventListener("DOMContentLoaded", () => {
   // skriv din kode her...
   let number = 5;
-  let maxValue = 10;
   let minValue = 0;
+  let maxValue = 10;
   let plusButton = document.querySelector("#btn-count-increase");
   let minusButton = document.querySelector("#btn-count-decrease");
   let textCountElement = document.querySelector("#text-count");
@@ -11,20 +11,20 @@ document.addEventListener("DOMContentLoaded", () => {
   function updateNumber() {
     textCountElement.textContent = number;
   }
-
   updateNumber();
 
-  plusButton.addEventListener("click", () => {
-    if (number < maxValue) {
+  function checkMinMaxValue(direction) {
+    if (direction === "inc" && number < maxValue) {
       number++;
       updateNumber();
     }
-  });
 
-  minusButton.addEventListener("click", () => {
-    if (number > minValue) {
+    if (direction === "dec" && number > minValue) {
       number--;
       updateNumber();
     }
-  });
+  }
+
+  plusButton.addEventListener("click", () => checkMinMaxValue("inc"));
+  minusButton.addEventListener("click", () => checkMinMaxValue("dec"));
 }); // Afslutter: DOMContentLoaded
